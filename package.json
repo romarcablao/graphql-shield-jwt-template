@@ -1,11 +1,12 @@
 {
-  "name": "graphql-jwt-template",
+  "name": "graphql-shield-jwt-template",
   "version": "1.0.0",
-  "description": "Sample structure/template on using GraphQL and JSON Web Token",
+  "description": "Sample structure/template on using GraphQL, GraphQL Shield and JSON Web Token",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "eslint:fix": "./node_modules/.bin/eslint --fix --ignore-path .gitignore ."
   },
   "keywords": [
     "graphql",
@@ -25,5 +26,9 @@
     "path": "^0.12.7",
     "uniqid": "^5.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
 }
