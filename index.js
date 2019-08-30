@@ -1,8 +1,8 @@
 const { GraphQLServer } = require('graphql-yoga');
 const resolvers = require('./graphql/resolvers');
 const typeDefs = require('./graphql/typeDef');
-const authDefs = require('./graphql/graphql_shield');
-const permissions = require('./graphql/graphql_shield/permissions');
+const authDefs = require('./graphql/permissions');
+const permissions = require('./graphql/permissions/permissions');
 
 const options = {
     port: 4000,
