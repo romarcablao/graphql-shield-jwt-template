@@ -63,9 +63,9 @@ class LocalDatabase {
             });
 
             if (this.validPassword) {
-                let token = await jwt.sign({ id: this.user.id, email: this.user.email }, 'secret', {
+                let token = await jwt.sign({ id: this.user.id, email: this.user.email, role: this.user.role }, 'secret', {
                     algorithm: 'HS256',
-                    expiresIn: 60 * 5
+                    expiresIn: 60 * 1
                 })
                 return { token: token };
             }
