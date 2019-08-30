@@ -69,7 +69,7 @@ class LocalDatabase {
     throw new Error('Unauthorized Login!');
 }
 ```
-### Sample usage of GraphQl Shield
+### Sample usage of GraphQL Shield
 ```js
 // Setting Rules
 const isAuthenticated = rule()(async (parent, args, ctx) => ctx.isValid);
@@ -103,5 +103,5 @@ const permissions = shield(
 ```
 
 ---
-:cloud: [Romar Cablao](https://www.linkedin.com/in/romarcablao) | <romarcablao@gmail.com>
+[Romar Cablao](https://www.linkedin.com/in/romarcablao) | <romarcablao@gmail.com>
 
