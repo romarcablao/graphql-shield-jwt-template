@@ -37,4 +37,4 @@ module.exports = `
     type Mutation {
         CreateUser(input: UserDataInput): String!
     }
-`
+`;

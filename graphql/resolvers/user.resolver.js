@@ -1,26 +1,20 @@
 const DB = require('../../database/database.class');
-let userDB = new DB;
+
+const userDB = new DB();
 
 module.exports = {
-    Query: {
-        Users: () => {
-            return userDB.getUsers();
-        },
-        User: (_, { email }) => {
-            return userDB.getUserbyEmail(email);
-        },
-        Login: (_, { input }) => {
-            return userDB.userLogin(input);
-        }
+  Query: {
+    Users: () => userDB.getUsers(),
+    User: (_, { email }) => userDB.getUserbyEmail(email),
+    Login: (_, { input }) => userDB.userLogin(input),
+  },
+  Mutation: {
+    CreateUser: (_, { input }) => {
+      if (!userDB.emailExist(input.email)) {
+        userDB.saveNewUser(input);
+        return 'Account was successfully created!';
+      }
+      return new Error('Email already exists!');
     },
-    Mutation: {
-        CreateUser: (_, { input }) => {
-            if (!userDB.emailExist(input.email)) {
-                userDB.saveNewUser(input);
-                return "Account was successfully created!"
-            } else {
-                throw new Error("Email already exists!");
-            }
-        }
-    }
-}
+  },
+};
