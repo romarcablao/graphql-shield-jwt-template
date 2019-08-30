@@ -21,16 +21,23 @@ class LocalDatabase {
 ...
 ```
 ```js
-async userLogin(credentials) {
+ async userLogin(credentials) {
     this.user = this.getUserbyEmail(credentials.email);
-    if (this.user === undefined) {
-        throw new Error('Unauthorized Login!');
+    if (this.user != undefined) {
+        this.validPassword = await bcrypt.compare(credentials.password, this.user.password).then(function (res) {
+            return res;
+        });
+
+        if (this.validPassword) {
+            let token = await jwt.sign({ id: this.user.id, email: this.user.email }, 'secret', {
+                algorithm: 'HS256',
+                expiresIn: 60 * 5
+            })
+            return { token: token };
+        }
     }
-    let token = await jwt.sign({ id: this.user.id, email: this.user.email }, 'secret', {
-        algorithm: 'HS256',
-        expiresIn: 60 * 5
-    })
-    return { token: token };
+
+    throw new Error('Unauthorized Login!');
 }
 ```
 
