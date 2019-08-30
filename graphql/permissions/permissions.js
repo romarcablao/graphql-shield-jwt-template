@@ -8,7 +8,7 @@ const permissions = shield(
             User: or(rules.isAdmin, and(rules.isAuthenticated, rules.canViewUserProfile))
         },
         Mutation: {
-            CreateUser: rules.isAdmin
+            CreateUser: not(rules.isAdmin) //Use not when no data stored on database s you can add one
         }
     }
 );
