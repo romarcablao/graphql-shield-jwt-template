@@ -16,7 +16,7 @@
   "author": "Romar Cablao <romarcablao@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "graphql": "^14.5.3",
     "graphql-shield": "^6.0.6",
     "graphql-yoga": "^1.18.3",
